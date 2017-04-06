@@ -6,6 +6,9 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # Make javascript_pack_tag load assets from webpack-dev-server.
+  config.x.webpacker[:dev_server_host] = 'http://localhost:8080'
+
   # Do not eager load code on boot.
   config.eager_load = false
 

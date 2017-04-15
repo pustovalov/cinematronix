@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -21,6 +21,12 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'webpacker'
 gem 'foreman'
+
+gem 'figaro'
+gem 'fog-aws'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'carrierwave-base64'
+gem 'mini_magick'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -37,6 +43,8 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'awesome_print', require:'ap'
 end
 
 group :development do

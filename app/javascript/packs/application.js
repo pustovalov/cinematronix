@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from '../components/app.vue'
+import App from '../components/App.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(document.createElement('app'))
@@ -8,6 +8,4 @@ document.addEventListener('DOMContentLoaded', () => {
     template: '<App/>',
     components: { App }
   })
-
-  console.log(app)
 })

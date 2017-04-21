@@ -6,6 +6,6 @@ CarrierWave.configure do |config|
     aws_secret_access_key: "#{Rails.application.secrets.aws_secret_access_key}",
   }
   config.fog_directory  = "#{Rails.application.secrets.s3_bucket_name}"
-  config.fog_public     = false
+  config.fog_public     = true
   config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
 end

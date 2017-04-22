@@ -8,7 +8,6 @@
 </template>
 
 <script>
-  import { movies } from '../data/movies.js'
   import MovieItem from './MovieItem.vue'
 
   export default {
@@ -18,9 +17,20 @@
     data() {
       const data = {
         message: "sup",
-        movies: movies
+        movieEndPoint: "/movies",
+        movies: []
       }
       return data
+    },
+    methods: {
+      fetchMovies() {
+        this.$http.get(this.movieEndPoint).then(response => {
+          this.movies = response.data
+        })
+      }
+    },
+    created() {
+      this.fetchMovies()
     }
   }
 </script>

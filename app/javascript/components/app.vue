@@ -9,6 +9,7 @@
 
 <script>
   import MovieItem from './MovieItem.vue'
+  import MovieResource from './MovieResource.js'
 
   export default {
     components: {
@@ -17,16 +18,17 @@
     data() {
       const data = {
         message: "sup",
-        movieEndPoint: "/movies",
         movies: []
       }
       return data
     },
     methods: {
       fetchMovies() {
-        this.$http.get(this.movieEndPoint).then(response => {
-          this.movies = response.data
-        })
+        let mr = new MovieResource(this.$http)
+        mr.get()
+          .then(response => {
+            this.movies = response.data
+          })
       }
     },
     created() {

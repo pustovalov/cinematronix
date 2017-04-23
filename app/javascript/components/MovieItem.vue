@@ -10,7 +10,7 @@
       {{ movie.description }}
     </div>
     <div>
-      <b>duration:</b> {{ formatedDuration }}
+      <b>duration:</b> {{ movie.duration }}
     </div>
   </li>
 </template>
@@ -18,12 +18,7 @@
 <script>
   export default {
     name: 'movie-item',
-    props: ['movie'],
-    computed: {
-      formatedDuration() {
-        return `${Math.round(this.movie.duration / 60)} minutes`
-      }
-    }
+    props: ['movie']
   }
 </script>
 

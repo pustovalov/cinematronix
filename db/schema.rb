@@ -15,38 +15,38 @@ ActiveRecord::Schema.define(version: 20170418092339) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "halls", force: :cascade do |t|
-    t.string   "name",       null: false
+  create_table "halls", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "movie_sessions", force: :cascade do |t|
+  create_table "movie_sessions", id: :serial, force: :cascade do |t|
     t.datetime "start_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "hall_id"
-    t.integer  "movie_id"
-    t.index ["hall_id"], name: "index_movie_sessions_on_hall_id", using: :btree
-    t.index ["movie_id"], name: "index_movie_sessions_on_movie_id", using: :btree
+    t.integer "hall_id"
+    t.integer "movie_id"
+    t.index ["hall_id"], name: "index_movie_sessions_on_hall_id"
+    t.index ["movie_id"], name: "index_movie_sessions_on_movie_id"
   end
 
-  create_table "movies", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.integer  "duration",    null: false
-    t.string   "genre",       null: false
-    t.string   "description", null: false
-    t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "movies", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "duration", null: false
+    t.string "genre", null: false
+    t.string "description", null: false
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "tickets", force: :cascade do |t|
-    t.decimal  "price",            precision: 5, scale: 2, null: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.integer  "movie_session_id"
-    t.index ["movie_session_id"], name: "index_tickets_on_movie_session_id", using: :btree
+  create_table "tickets", id: :serial, force: :cascade do |t|
+    t.decimal "price", precision: 5, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "movie_session_id"
+    t.index ["movie_session_id"], name: "index_tickets_on_movie_session_id"
   end
 
 end

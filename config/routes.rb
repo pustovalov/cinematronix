@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  # get 'landing/index'
   root to: 'landing#index'
 
-  get 'movies', to: 'movies#index'
+  namespace :api do
+    resources :movies
+  end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  match "*path", to: "landing#index", via: :all
 end

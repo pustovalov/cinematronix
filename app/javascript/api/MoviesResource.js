@@ -1,7 +1,7 @@
-export default class MovieResource {
+export default class MoviesResource {
   constructor(transport) {
     this.transport = transport
-    this.endPoint = '/movies'
+    this.endPoint = '/api/movies'
   }
 
   get() {

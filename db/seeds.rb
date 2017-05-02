@@ -28,10 +28,10 @@ halls.each do |hall|
   end
 end
 
-movie_session = MovieSession.all
+movie_sessions = MovieSession.all
 
-movie_session.each do |ms|
-  200.times do
+movie_sessions.each do |ms|
+  50.times do
     FactoryGirl.create(:ticket, movie_session: ms)
   end
 end

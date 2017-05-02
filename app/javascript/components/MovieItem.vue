@@ -1,16 +1,20 @@
 <template>
-  <li class="movie-item">
-    <h3>
-      {{ movie.name }}
-    </h3>
-    <div class="movie-item-img">
-      <img :src="movie.image.thumb.url">
-    </div>
-    <div class="movie-item-description">
-      {{ movie.description }}
-    </div>
-    <div>
-      <b>duration:</b> {{ movie.duration }}
+  <li class="col-md-4">
+    <div class="movie-item thumbnail">
+      <h3>
+        <router-link :to="{ name: 'movies', params: { id: movie.id } }">
+          {{ movie.name }}
+        </router-link>
+      </h3>
+      <div class="movie-item-img">
+        <img :src="movie.image.thumb.url">
+      </div>
+      <div class="movie-item-description">
+        {{ movie.description }}
+      </div>
+      <div>
+        <b>duration:</b> {{ movie.duration }}
+      </div>
     </div>
   </li>
 </template>
@@ -24,16 +28,17 @@
 
 <style lang="scss">
   .movie-item {
-    width: 320px;
-    margin: 0 0 20px 20px;
-
-    &:first-child,
-    &:nth-child(3n+1) {
-      margin-left: 0;
-    }
-
     h3 {
-      min-height: 50px;;
+      min-height: 50px;
+
+      a {
+        color: #000;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
     &-img {

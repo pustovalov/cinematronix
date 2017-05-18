@@ -28,7 +28,7 @@
     },
     methods: {
       fetchMovies() {
-        this.$store.dispatch('getMovies', this.$http)
+        this.$store.dispatch('getMovies', { transport: this.$http })
       }
     },
     created() {

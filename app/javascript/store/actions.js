@@ -1,11 +1,10 @@
-import MoviesResource from '../api/MoviesResource'
 import MovieResource from '../api/MovieResource'
 import * as types from './mutation-types'
 
-export const getMovies = ({ commit }, transport) => {
-  let moviesResource = new MoviesResource(transport)
+export const getMovies = ({ commit }, data) => {
+  let movieResource = new MovieResource({...data})
 
-  moviesResource.get()
+  movieResource.index()
     .then(response => {
       let movies = response.data
       commit(types.RECEIVE_MOVIES, {
@@ -17,7 +16,7 @@ export const getMovies = ({ commit }, transport) => {
 export const getMovie = ({ commit }, data) => {
   let movieResource = new MovieResource({...data})
 
-  movieResource.get()
+  movieResource.show(data.id)
     .then(response => {
       let movie = response.data
       commit(types.RECEIVE_MOVIE, {

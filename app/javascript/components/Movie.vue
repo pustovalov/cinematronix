@@ -38,8 +38,7 @@
     },
     computed: {
       ...mapGetters([
-        'movie',
-        'movieHalls'
+        'movie'
       ])
     },
     methods: {

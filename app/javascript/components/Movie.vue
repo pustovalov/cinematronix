@@ -6,7 +6,7 @@
           <h3>
               {{ movie.name }}
           </h3>
-          <div class="movie-img">
+          <div v-if="movie.image" class="movie-img">
             <img :src="movie.image.thumb.url">
           </div>
           <p class="movie-description">

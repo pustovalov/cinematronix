@@ -5,6 +5,7 @@ module.exports = {
   options: {
     presets: [
       ['env', { modules: false }]
-    ]
+    ],
+    plugins: ['transform-object-rest-spread']
   }
 }

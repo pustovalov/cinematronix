@@ -1,7 +1,7 @@
 <template>
-  <div id='app'>
-    <p>{{ message }}</p>
-    <ul id="movie-list" class="movie-list">
+  <div id='app' class="container-fluid">
+    <h2 class="text-center">{{ title }}</h2>
+    <ul class="movie-list list-unstyled movie-list">
       <movie-item v-for="movie in movies" :key="movie.id" :movie="movie"></movie-item>
     </ul>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
   import MovieItem from './MovieItem.vue'
-  import MovieResource from './MovieResource.js'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
@@ -17,18 +17,18 @@
     },
     data() {
       const data = {
-        message: "sup",
-        movies: []
+        title: "movies"
       }
       return data
     },
+    computed: {
+      ...mapGetters([
+        'movies'
+      ])
+    },
     methods: {
       fetchMovies() {
-        let mr = new MovieResource(this.$http)
-        mr.get()
-          .then(response => {
-            this.movies = response.data
-          })
+        this.$store.dispatch('getMovies', { transport: this.$http })
       }
     },
     created() {
@@ -37,17 +37,6 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  p {
-    font-size: 2em;
-    text-align: center;
-  }
+<style lang="scss">
 
-  .movie-list {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    width: 1000px;
-    margin: 0 auto;
-  }
 </style>
